@@ -89,6 +89,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/date_edt_il"
             android:layout_width="match_parent"
+            android:clickable="true"
+            android:focusable="false"
             android:layout_height="wrap_content"
             android:lines="2" />
 

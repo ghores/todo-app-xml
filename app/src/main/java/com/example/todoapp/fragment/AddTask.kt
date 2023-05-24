@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.example.todoapp.R
 import com.example.todoapp.databinding.FragmentAddTaskBinding
 import com.example.todoapp.model.ToDo
@@ -29,7 +30,7 @@ class AddTask : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.dateEdtIl.setOnClickListener {
-            Picker(parentFragmentManager)
+            Picker(parentFragmentManager,binding.dateEdtIl)
         }
 
         binding.addTaskBtn.setOnClickListener {
@@ -39,6 +40,8 @@ class AddTask : Fragment() {
                 "$hour:$minute",
                 fullDate, false
             )
+            toDoList.add(newTodo)
+            Navigation.findNavController(binding.addTaskBtn).navigate(R.id.action_addTask_to_currentToDos)
         }
     }
 }
