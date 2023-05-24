@@ -53,6 +53,7 @@ class CurrentToDos : Fragment() {
         )
         currentToDosBinding.recView.adapter = adapter
         currentToDosBinding.recView.layoutManager = LinearLayoutManager(requireContext())
+
     }
 
 }

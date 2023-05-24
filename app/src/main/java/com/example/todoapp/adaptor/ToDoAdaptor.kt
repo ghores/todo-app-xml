@@ -1,5 +1,6 @@
 package com.example.todoapp.adaptor
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +14,14 @@ import com.example.todoapp.fragment.currentToDosBinding
 import com.example.todoapp.fragment.dataStore
 import com.example.todoapp.model.ToDo
 import kotlinx.collections.immutable.mutate
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class ToDoAdaptor(var todoList: MutableList<ToDo>, var context: Context) :
     RecyclerView.Adapter<ToDoAdaptor.ViewHolder>() {
 
+
+    @SuppressLint("NotifyDataSetChanged")
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var card = itemView.findViewById<CardView>(R.id.card)
@@ -30,22 +34,23 @@ class ToDoAdaptor(var todoList: MutableList<ToDo>, var context: Context) :
         var isDoneCheckBox = itemView.findViewById<CheckBox>(R.id.isDoneCh)
 
         init {
-            isDoneCheckBox.setOnCheckedChangeListener { button, isChecked ->
-                if (isChecked) {
+            isDoneCheckBox.setOnCheckedChangeListener { _, isSelected ->
+                if (isSelected) {
                     runBlocking {
-                        context.dataStore.updateData {
-                            it.copy(
-                                it.todoList.mutate {
-                                    it.removeAt(adapterPosition)
-                                }
-                            )
+                        launch {
+                            context.dataStore.updateData { it ->
+                                it.copy(
+                                    it.todoList.mutate {
+                                        it.removeAt(adapterPosition)
+                                    }
+                                )
+                            }
                         }
                     }
                     currentToDosBinding.recView.adapter!!.notifyDataSetChanged()
                 }
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
