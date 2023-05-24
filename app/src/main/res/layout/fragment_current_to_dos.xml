@@ -21,6 +21,7 @@
         android:id="@+id/addTaskFabBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:tint="@color/white"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/baseline_add_task_24"
