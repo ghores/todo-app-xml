@@ -16,7 +16,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:text="Add Title Task"
-        android:textColor="@color/black"
+        android:textColor="@color/green"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
         android:text="Add Description"
-        android:textColor="@color/black"
+        android:textColor="@color/green"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -71,7 +71,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
         android:text="Set Date"
-        android:textColor="@color/black"
+        android:textColor="@color/green"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -96,15 +96,17 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/addTaskBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:text="Add Task"
+        app:cornerRadius="20dp"
+        app:backgroundTint="@color/green"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
 </LinearLayout>
