@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.todoapp.R
 import com.example.todoapp.databinding.FragmentAddTaskBinding
-import com.example.todoapp.db.ToDoListListSerializer
 import com.example.todoapp.db.ToDoListSerializer
 import com.example.todoapp.model.ToDo
 import com.example.todoapp.utils.Picker
@@ -57,10 +56,11 @@ class AddTask : Fragment() {
                         }
                     )
                 }
+                Navigation.findNavController(binding.addTaskBtn)
+                    .navigate(R.id.action_addTask_to_currentToDos)
+
             }
 
-            Navigation.findNavController(binding.addTaskBtn)
-                .navigate(R.id.action_addTask_to_currentToDos)
         }
     }
 }
