@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".fragment.AddTask">
 
-
     <TextView
         android:id="@+id/titleTv"
         android:layout_width="wrap_content"
@@ -89,9 +88,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/date_edt_il"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="false"
-            android:layout_height="wrap_content"
             android:lines="2" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -103,10 +102,10 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:text="Add Task"
-        app:cornerRadius="20dp"
-        app:backgroundTint="@color/green"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:backgroundTint="@color/green"
+        app:cornerRadius="20dp" />
 
 </LinearLayout>

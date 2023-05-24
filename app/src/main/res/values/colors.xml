@@ -5,4 +5,6 @@
     <color name="yellow">#FDE50A</color>
     <color name="green">#4EC410</color>
     <color name="blue">#0E93F8</color>
+    <color name="darkGray">#292828</color>
+    <color name="blackLight">#131212</color>
 </resources>

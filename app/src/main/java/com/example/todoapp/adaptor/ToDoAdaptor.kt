@@ -9,7 +9,11 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
+import com.example.todoapp.fragment.currentToDosBinding
+import com.example.todoapp.fragment.dataStore
 import com.example.todoapp.model.ToDo
+import kotlinx.collections.immutable.mutate
+import kotlinx.coroutines.runBlocking
 
 class ToDoAdaptor(var todoList: MutableList<ToDo>, var context: Context) :
     RecyclerView.Adapter<ToDoAdaptor.ViewHolder>() {
@@ -24,6 +28,23 @@ class ToDoAdaptor(var todoList: MutableList<ToDo>, var context: Context) :
         var timeText = itemView.findViewById<TextView>(R.id.timeTextBox)
         var timeDTb = itemView.findViewById<TextView>(R.id.timeDescriptionBox)
         var isDoneCheckBox = itemView.findViewById<CheckBox>(R.id.isDoneCh)
+
+        init {
+            isDoneCheckBox.setOnCheckedChangeListener { button, isChecked ->
+                if (isChecked) {
+                    runBlocking {
+                        context.dataStore.updateData {
+                            it.copy(
+                                it.todoList.mutate {
+                                    it.removeAt(adapterPosition)
+                                }
+                            )
+                        }
+                    }
+                    currentToDosBinding.recView.adapter!!.notifyDataSetChanged()
+                }
+            }
+        }
 
     }
 
